@@ -171,6 +171,7 @@ def Unet(
         decoder_block_type='upsampling',
         decoder_filters=(256, 128, 64, 32, 16),
         decoder_use_batchnorm=True,
+        fsr=True,
         **kwargs
 ):
     """ Unet_ is a fully convolution neural network for image semantic segmentation
@@ -198,6 +199,7 @@ def Unet(
         decoder_filters: list of numbers of ``Conv2D`` layer filters in decoder blocks
         decoder_use_batchnorm: if ``True``, ``BatchNormalisation`` layer between ``Conv2D`` and ``Activation`` layers
             is used.
+        fsr: Filter strude reduction in stem block
 
     Returns:
         ``keras.models.Model``: **Unet**
@@ -224,6 +226,7 @@ def Unet(
         input_shape=input_shape,
         weights=encoder_weights,
         include_top=False,
+        fsr=fsr,
         **kwargs,
     )
 
